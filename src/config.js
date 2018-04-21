@@ -58,14 +58,18 @@ module.exports = {
       assets:[{ // quantity must be satoshi if it is divisible.
         quantity:1145140,
         asset:"BITCLUB",
-        oddsScore:100
+        oddsScore:5000
       },{
         quantity:10,
         asset:"ECOJK.HYOU",
-        oddsScore:200
+        oddsScore:30000
       },{
         quantity:1,
-        asset:"MISSMONACOIN",
+        asset:"MISSMONACOIN.THANKYOU",
+        oddsScore:100
+      },{
+        quantity:11451400,
+        asset:"MONA",
         oddsScore:1
       }]
     },
@@ -78,3 +82,4 @@ module.exports = {
     port:process.env.PORT||((process.env.NODE_ENV==="production")?80:3939)
   }
 }
+

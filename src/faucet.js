@@ -65,7 +65,7 @@ router.use((req,res,next)=>{
     feePerByte:config.feeSatByte
     
   }).then(hex=>{
-    return cp.signTx(hex,config.coin.network.entropyCipher,config.coin.network.password,0)
+    return cp.signTx(hex,config.coin.entropyCipher,config.coin.password,0)
   }).then(result=>{
     res.send(result)
   }).catch((e)=>{
@@ -133,10 +133,13 @@ router.use((req,res,next)=>{
       
     })
   }).then(hex=>{
-    return cp.signTx(hex,config.coin.network.entropyCipher,config.coin.network.password,0)
+    return cp.signTx(hex,config.coin.entropyCipher,config.coin.password,0)
   }).then(result=>{
     res.send(result)
   }).catch(()=>next("Error"))
+}).get("/random/odds",featureFilter("random"),(req,res)=>{
+  res.send(config.feature.random.assets)
+  
 })
 router.use((err,req,res,next)=>{
   res.status(500).send(err)

@@ -60,6 +60,9 @@ module.exports=class{
     this.addresses={}
     this.apiIndex =0
 
+    this.entropyCipher=opt.entropyCipher
+    this.password=opt.password
+    
     const seed=
         bip39.mnemonicToSeed(
           bip39.entropyToMnemonic(
