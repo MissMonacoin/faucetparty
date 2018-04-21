@@ -73,5 +73,8 @@ module.exports = {
     receiveAndReturn:{
       
     }
+  },
+  service:{
+    port:process.env.PORT||((process.env.NODE_ENV==="production")?80:3939)
   }
 }
