@@ -1,0 +1,25 @@
+{
+  "name": "@missmonacoin/faucetparty",
+  "version": "1.0.0",
+  "description": "A Useful Faucet for Counterparty/Monaparty",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@missmonacoin/bip39-eng": "^2.5.0",
+    "@missmonacoin/bitcoincashjs-lib": "^1.0.1",
+    "@missmonacoin/bitcoinjs-lib-zcash": "^1.0.0",
+    "@missmonacoin/blackcoinjs-lib": "^1.0.0",
+    "axios": "^0.18.0",
+    "bignumber.js": "^6.0.0",
+    "bitcoinjs-lib": "^3.3.2",
+    "bitcoinjs-message": "^2.0.0",
+    "body-parser": "^1.18.2",
+    "coinselect": "^3.1.11",
+    "express": "^4.16.3",
+    "jsonpath": "^1.0.0"
+  }
+}
