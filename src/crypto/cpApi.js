@@ -1,8 +1,8 @@
 const BigNumber = require('bignumber.js');
 const axios = require("axios")
 
-const DEFAULT_REGULAR_DUST=70000
-const DEFAULT_MULTISIG_DUST=70000
+const DEFAULT_REGULAR_DUST=100000
+const DEFAULT_MULTISIG_DUST=100000
 
 
 module.exports=class{

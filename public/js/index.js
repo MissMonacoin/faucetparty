@@ -50,3 +50,12 @@ function sendReq() {
     alert("Error:" + e);
   });
 }
+
+var b = document.getElementsByClassName("addr")
+for(var i = 0; i < b.length; i++)
+{
+  var a=b.item(i)
+  if (queries.isNative!=="true") {
+    a.href="https://monya-wallet.github.io/wallet/?url="+a.href
+  }
+}

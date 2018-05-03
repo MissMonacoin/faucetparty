@@ -18,7 +18,7 @@
 
   
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper light-blue lighten-2">
       <a href="#" class="brand-logo center">FaucetParty</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
@@ -29,7 +29,7 @@
 
   <div class="g-recaptcha" data-sitekey="6LfIiVQUAAAAAGxnGeR8GyDCHf3BYN09jcANbn3P" data-theme="light" data-size=normal data-callback="verified">
   </div>
-    <button onclick="goToMonya()" class="btn waves-effect waves-light" type="submit" name="action" id="openMonya" disabled="true">open monya / もにゃを開く
+    <button onclick="goToMonya()" class="btn waves-effect waves-light green lighten-1" type="submit" name="action" id="openMonya" disabled="true">open monya / もにゃを開く
     </button>
 
      <div class="card-panel">
@@ -50,17 +50,9 @@
 <div id="sig" class="container">
   <button onclick="sendReq()" class="btn waves-effect waves-light pulse btn-large">claim / もらう
   </button>
-  <div class="card-panel">
-    <span class="blue-text text-darken-2">失敗したらやり直してください。 If failed, please try again.
-    </span>
-  </div>
-  <div class="card-panel">
-    <span class="red-text text-darken-2">モナコインを使ったことのあるお友達はつかえません(*_ _)人ｺﾞﾒﾝﾅｻｲ / Friends who have ever used Monacoin can't use. Sorry.
-    </span>
-  </div>
   <div class="row" id="rcvCard" style="display:none">
     <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
+      <div class="card light-blue darken-1">
         <div class="card-content white-text">
           <span class="card-title" id="cur">1 MONA</span>
           <p>カードをゲットしました！もにゃに戻って受け取りましょう。<br>
@@ -71,10 +63,29 @@
       </div>
     </div>
   </div>
+  <div class="card-panel">
+    <span class="blue-text text-darken-2">失敗したらやり直してください。 If failed, please try again.
+    </span>
+  </div>
+  <div class="card-panel">
+    <span class="red-text text-darken-2">モナコインを使ったことのあるお友達はつかえません(*_ _)人ｺﾞﾒﾝﾅｻｲ / Friends who have ever used Monacoin can't use. Sorry.
+    </span>
+  </div>
+  
 </div>
 
-<footer class="page-footer">
-          
+<footer class="page-footer light-blue lighten-2">
+          <div class="container">
+            <div class="row">
+              <div class="col s6 center-align">
+                <a class="addr btn waves-effect waves-light amber darken-3
+" href="monacoin:MP7XMzRUW1RExtJ983QiGxns1FuwiCerbd">サービスに寄付</a>
+              </div>
+              <div class="col s6 center-align">
+                <a class="addr btn waves-effect waves-light deep-orange" href="monacoin:MStxnMRVMHH95YPzGeR9pdc3HLrvL6pjSo">作者に寄付</a>
+              </div>
+            </div>
+          </div>
           <div class="footer-copyright">
             <div class="container">
             © 2018 MissMonacoin
