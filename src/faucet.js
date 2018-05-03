@@ -2,6 +2,7 @@ const express = require('express')
 const  router = express.Router()
 const config  = require("./config")
 const axios = require("axios")
+const cors = require('cors')
 
 const BigNumber = require('bignumber.js');
 const CPAPI = require("./crypto/cpApi")
@@ -21,16 +22,12 @@ function featureFilter(feature){
     }
   }
 }
-
-router.use((req,res,next)=>{
+const recaptcha=(req,res,next)=>{
   if (config.recaptcha) {
     if(!req.body.recaptchaResponse){
-      next("RecaptchaRequired")
+      return next("RecaptchaRequired")
     }
-    axios.post("https://www.google.com/recaptcha/api/siteverify",{
-      secret:config.recaptcha.secret,
-      response:req.body.recaptchaResponse
-    }).then(response=>{
+    axios.post("https://www.google.com/recaptcha/api/siteverify",`secret=${config.recaptcha.secret}&response=${req.body.recaptchaResponse}`).then(response=>{
       if(response.data.success){
         next()
       }else{
@@ -40,7 +37,18 @@ router.use((req,res,next)=>{
   }else{
     next()
   }
-}).post("/random",featureFilter("random"),(req,res,next)=>{
+}
+router.use(cors())
+router.post("/random",recaptcha,featureFilter("random"),(req,res,next)=>{
+  const dest = req.body.dest
+  const signature = req.body.signature
+  const memo = req.body.memo
+
+  const cp = new CPAPI(config.coin)
+  const verifyResult = cp.cp.verifyMessage(req.body.recaptchaResponse,dest,signature)
+  if(!verifyResult){
+    return next("VerificationFailed")
+  }
   const col=config.feature.random.assets
   const oddsScoreSum=col.reduce((a,c)=>a+c.oddsScore,0)
   const val=Math.floor(Math.random()*oddsScoreSum)
@@ -52,32 +60,36 @@ router.use((req,res,next)=>{
       break;
     }
   }
-  const cp = new CPAPI(config.coin)
-  cp.createTx({
-    divisible:false,
-    sendAmount:chosen.quantity,
-    addressIndex:0,
-    dest:req.body.dest,
-    token:chosen.asset,
-    includeUnconfirmedFunds:true,
-    password:config.coin.network.password,
-    memo:"",
-    feePerByte:config.feeSatByte
-    
-  }).then(hex=>{
-    return cp.signTx(hex,config.coin.entropyCipher,config.coin.password,0)
-  }).then(result=>{
-    res.send(result)
-  }).catch((e)=>{
+  (async function(){
+    const addrProp = await cp.cp.getAddressProp("",dest)
+    if(addrProp.unconfirmedTxApperances||addrProp.txApperances){
+      return next("AddressHasBeenUsed")
+    }
+    const txHex= await cp.createTx({
+      divisible:false,
+      sendAmount:chosen.quantity,
+      addressIndex:0,
+      dest,
+      token:chosen.asset,
+      includeUnconfirmedFunds:true,
+      password:config.coin.network.password,
+      memo,
+      feePerByte:config.feeSatByte,
+      useEnhancedSend:false
+      
+    })
+    const txId = await cp.signTx(txHex,config.coin.entropyCipher,config.coin.password,0)
+    res.send({txId:txId,chosen})
+  })().catch((e)=>{
     next(e.message)
   })
   
-}).post("/request",featureFilter("request"),(req,res)=>{
+}).post("/request",recaptcha,featureFilter("request"),(req,res)=>{
   const token = req.body.token
   const sig = req.body.sig
   const dest = req.body.dest
   
-}).post("/receiveAndReturn",featureFilter("receiveAndReturn"),(req,res,next)=>{
+}).post("/receiveAndReturn",recaptcha,featureFilter("receiveAndReturn"),(req,res,next)=>{
   const txId = req.body.txId
   const token = req.body.token
   const dest=req.body.dest
@@ -140,9 +152,12 @@ router.use((req,res,next)=>{
 }).get("/random/odds",featureFilter("random"),(req,res)=>{
   res.send(config.feature.random.assets)
   
+}).get("/address",(req,res)=>{
+  res.send((new CPAPI(config.coin)).cp.getAddress(0,0))
+  
 })
 router.use((err,req,res,next)=>{
-  res.status(500).send(err)
+  res.status(500).send({error:err})
 })
 
 module.exports = router

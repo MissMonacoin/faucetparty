@@ -1,5 +1,10 @@
 const BigNumber = require('bignumber.js');
 const axios = require("axios")
+
+const DEFAULT_REGULAR_DUST=70000
+const DEFAULT_MULTISIG_DUST=70000
+
+
 module.exports=class{
   constructor(cp){
     this.cp=cp
@@ -25,7 +30,11 @@ module.exports=class{
       disable_utxo_locks,
       encoding:"auto",
       extended_tx_info,
-      pubkey:[cur.getPubKey(0,addressIndex)]
+      pubkey:[cur.getPubKey(0,addressIndex)],
+
+
+      regular_dust_size:DEFAULT_REGULAR_DUST,
+      multisig_dust_size:DEFAULT_MULTISIG_DUST
     },param))
   }
   createTx(opt){
@@ -39,6 +48,7 @@ module.exports=class{
     const memo=opt.memo
     const feePerByte = opt.feePerByte || this.cp.defaultFeeSatPerByte
     const doNotSendTx = !!opt.doNotSendTx
+    const useEnhancedSend = !!opt.useEnhancedSend
     
     const cur = this.cp
     let hex=""
@@ -52,15 +62,18 @@ module.exports=class{
       destination:dest,
       asset:token,
       quantity:qty.toNumber(),
-      memo
+      memo,
+      use_enhanced_send: useEnhancedSend
     },{
       addressIndex,
       includeUnconfirmedFunds,
       feePerByte,
       disableUtxoLocks:true,
       extendedTxInfo:true
+
     }).then(res=>{
-      return hex=res.tx_hex
+      return res.tx_hex
+     
     })
   }
   createIssuance(opt){

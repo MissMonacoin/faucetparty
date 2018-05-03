@@ -50,27 +50,65 @@ module.exports = {
     entropyCipher:process.env.FP_ENTROPY,
     password:process.env.FP_PASSWORD
   }),
-  recaptcha:false,
+  recaptcha:{
+    secret:process.env.FP_RECAPTCHA_SECRET
+  },
  
   feeSatByte:101,
   feature:{// set false if disabled these features
     random:{
-      assets:[{ // quantity must be satoshi if it is divisible.
-        quantity:1145140,
-        asset:"BITCLUB",
-        oddsScore:5000
+      assets:[{
+        quantity:1e8,
+        asset:"MONA",
+        oddsScore:1
       },{
-        quantity:10,
-        asset:"ECOJK.HYOU",
-        oddsScore:30000
+        quantity:3e8,
+        asset:"XMP",
+        oddsScore:10
+      },{
+        quantity:1e6,
+        asset:"MONA",
+        oddsScore:3
+      },{
+        quantity:5e7,
+        asset:"XMP",
+        oddsScore:100
       },{
         quantity:1,
         asset:"MISSMONACOIN.THANKYOU",
+        oddsScore:1500
+      },{
+        quantity:1,
+        asset:"GIFT",
+        oddsScore:700
+      },{
+        quantity:1,
+        asset:"ECOJK.HYOU",
+        oddsScore:500
+      },{
+        quantity:1,
+        asset:"JAVASCRIPT",
+        oddsScore:500
+      },{
+        quantity:1e8,
+        asset:"KRSW",
+        oddsScore:300
+      },{
+        quantity:1,
+        asset:"MONAICON",
+        oddsScore:500
+      },{
+        quantity:1,
+        asset:"MAGATAMAVT",
         oddsScore:100
       },{
-        quantity:11451400,
-        asset:"MONA",
-        oddsScore:1
+        quantity:1,
+        asset:"MAGATAMATQ",
+        oddsScore:100
+      },{
+        quantity:1,
+        asset:"MAGATAMAWT",
+        oddsScore:100
       }]
     },
     request:false,
