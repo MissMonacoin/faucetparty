@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FaucetParty</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
@@ -34,27 +34,31 @@
 
      <div class="card-panel">
        <span class="blue-text text-darken-2">FaucetPartyへようこそ！モナコイン/
-         モナカードしたい！でもモナカードを持ってない！って人のためにモナカードとちょっとだけモナコインを配るサイトだよ！
-         受け取るには、まず、<a href="https://monya-wallet.github.io">もにゃ</a> のアカウントを作ろう
+         モナカードしたい！でもモナカードを持ってない！って人のためにモナカードとちょっとだけモナコインを配るサイトだよ！ <br />
+         受け取るには、まず、<a href="https://monya-wallet.github.io">もにゃ</a> のアカウントを作ろう <br />
          すでにモナコインで遊んだことのある人は受け取れません
        </span>
      </div>
      <div class="card-panel">
-       <span class="blue-text text-darken-2">Welcome to FaucetParty! I want to play MonaCards! But I don't have MonaCards! This website give you some monacards and monacoins.
-         To receive it, create an account of <a href="https://monya-wallet.github.io">Monya</a>!
+       <span class="blue-text text-darken-2">Welcome to FaucetParty! I want to play MonaCards! But I don't have MonaCards! This website give you some monacards and monacoins. <br />
+         To receive it, create an account of <a href="https://monya-wallet.github.io">Monya</a>! <br />
          People who have ever played with Monacoin cannot receive them.
        </span>
-  </div>
+     </div>
 </div>
-  
+
 <div id="sig" class="container">
   <button onclick="sendReq()" class="btn waves-effect waves-light pulse btn-large">claim / もらう
   </button>
   <div class="card-panel">
-       <span class="blue-text text-darken-2">失敗したらやり直してください。 If failed, please try again.
-       </span>
-     </div>
-   <div class="row" id="rcvCard" style="display:none">
+    <span class="blue-text text-darken-2">失敗したらやり直してください。 If failed, please try again.
+    </span>
+  </div>
+  <div class="card-panel">
+    <span class="red-text text-darken-2">モナコインを使ったことのあるお友達はつかえません(*_ _)人ｺﾞﾒﾝﾅｻｲ / Friends who have ever used Monacoin can't use. Sorry.
+    </span>
+  </div>
+  <div class="row" id="rcvCard" style="display:none">
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
