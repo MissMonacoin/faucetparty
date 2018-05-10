@@ -70,7 +70,7 @@ module.exports = {
       },{
         quantity:1e6,
         asset:"MONA",
-        oddsScore:3,
+        oddsScore:5,
         divisible:true
       },{
         quantity:5e7,
