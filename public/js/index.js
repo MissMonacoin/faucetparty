@@ -3,6 +3,7 @@ var token = "";
 var errors={
   AddressHasBeenUsed:"モナコインを使ったことのあるお友達はつかえません(*_ _)人ｺﾞﾒﾝﾅｻｲ / Friends who have ever used Monacoin can't use. Sorry.",
   RecaptchaRequired:"画像認証に失敗しました。/ Failed to verify recaptcha",
+  RecaptchaFailed:"初めからやり直してください(*_ _)人ｺﾞﾒﾝﾅｻｲ / Please try again. Sorry(*_ _)人",
   VerificationFailed:"署名が間違っています。/ Signature is incorrect"
   
 }
