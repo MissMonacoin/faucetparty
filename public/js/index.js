@@ -1,6 +1,11 @@
 var api = "/api";
 var token = "";
-
+var errors={
+  AddressHasBeenUsed:"モナコインを使ったことのあるお友達はつかえません(*_ _)人ｺﾞﾒﾝﾅｻｲ / Friends who have ever used Monacoin can't use. Sorry.",
+  RecaptchaRequired:"画像認証に失敗しました。/ Failed to verify recaptcha",
+  VerificationFailed:"署名が間違っています。/ Signature is incorrect"
+  
+}
 var queries = location.search.substr(1).split("&").reduce(function (a, b) {
   var kv = b.split("=");
   a[kv[0]] = decodeURI(kv[1])
@@ -79,9 +84,13 @@ function sendReq() {
     memo: queries.payload
   }).then(function (r) {
     document.getElementById("rcvCard").style.display = "block";
-    document.getElementById("cur").innerText = r.data.chosen.quantity + " " + r.data.chosen.asset;
+    document.getElementById("cur").innerText = r.data.chosen.divisible?r.data.chosen.quantity/1e8:r.data.chosen.quantity + " " + r.data.chosen.asset;
   }).catch(function (e) {
-    alert("Error:" + e);
+    try{
+      alert(errors[JSON.parse(e.request.responseText).error])
+    }catch(error){
+      alert("Error:" + e);
+    }
   });
 }
 

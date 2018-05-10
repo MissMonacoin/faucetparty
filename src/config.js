@@ -58,21 +58,25 @@ module.exports = {
   feature:{// set false if disabled these features
     random:{
       assets:[{
-        quantity:1e8,
+        quantity:1e8,//quantity is satoshi
         asset:"MONA",
-        oddsScore:1
+        oddsScore:1,
+        divisible:true
       },{
         quantity:3e8,
         asset:"XMP",
-        oddsScore:10
+        oddsScore:10,
+        divisible:true
       },{
         quantity:1e6,
         asset:"MONA",
-        oddsScore:3
+        oddsScore:3,
+        divisible:true
       },{
         quantity:5e7,
         asset:"XMP",
-        oddsScore:100
+        oddsScore:100,
+        divisible:true
       },{
         quantity:1,
         asset:"MISSMONACOIN.THANKYOU",
@@ -89,10 +93,6 @@ module.exports = {
         quantity:1,
         asset:"JAVASCRIPT",
         oddsScore:500
-      },{
-        quantity:1e8,
-        asset:"KRSW",
-        oddsScore:300
       },{
         quantity:1,
         asset:"MONAICON",
