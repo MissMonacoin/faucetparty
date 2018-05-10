@@ -3,7 +3,7 @@ var token = "";
 
 var queries = location.search.substr(1).split("&").reduce(function (a, b) {
   var kv = b.split("=");
-  a[kv[0]] = kv[1];
+  a[kv[0]] = decodeURI(kv[1])
   return a;
 }, {});
 
@@ -11,6 +11,41 @@ if (queries.signature) {
   document.getElementById("initial").style.display = "none";
 } else if (typeof queries.question !== "undefined") {
   document.getElementById("sig").style.display = "none";
+  var a=queries.question
+  var arr=[]
+  var str=null
+  for(var i = 0;i<a.length;i++){
+	  if(typeof(str)==="string"){
+		  if(a[i]==="]"){
+			  arr.push(str)
+			  str=null
+      }else{
+			  str+=a[i]
+      }
+		  continue
+	  }
+	  switch(a[i].toLowerCase()){
+      case "[":
+			  str=""
+		    break;
+      case "y":
+			  arr.push(true)
+		    break;
+		  case "n":
+			  arr.push(false)
+		    break;
+		  case "x":
+			  arr.push(null)
+		    break;
+      default:
+			  arr.push(parseInt(a[i],16))
+	  }
+  }
+  for(var j=0;j<arr.length;j++){
+    var sendobj={}
+    sendobj['dimension'+j]=arr[j]+""
+    gtag('event', 'dimension'+j, sendobj);
+  }
 } else {
   document.getElementById("initial").style.display = "none";
   document.getElementById("sig").style.display = "none";

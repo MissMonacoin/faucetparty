@@ -16,8 +16,13 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', 'UA-114748969-3');
+  var custom_map={}
+  for(var k=0;k<10;k++){
+    custom_map['dimension'+k]='dimension'+k
+  }
+  gtag('config', 'UA-114748969-3',{
+    custom_map:custom_map
+  });
 </script>
   
 </head>
