@@ -42,14 +42,13 @@ if (queries.signature) {
 	  }
   }
   for(var j=0;j<arr.length;j++){
-    var sendobj={}
-    sendobj['dimension'+j]=arr[j]+""
-    gtag('event', 'dimension'+j, sendobj);
+    ga('set', 'dimension'+j, arr[j]);
   }
 } else {
   document.getElementById("initial").style.display = "none";
   document.getElementById("sig").style.display = "none";
 }
+ga('send', 'pageview');
 function goToMonya() {
   const u="monacoin:api_v1_signMsg?param=" + encodeURIComponent(JSON.stringify({
     addrIndex: 0,
