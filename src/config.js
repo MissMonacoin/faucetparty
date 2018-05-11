@@ -58,7 +58,7 @@ module.exports = {
   feature:{// set false if disabled these features
     random:{
       assets:[{
-        quantity:1e8,//quantity is satoshi
+        quantity:10e8,//quantity is satoshi
         asset:"MONA",
         oddsScore:1,
         divisible:true
@@ -68,7 +68,7 @@ module.exports = {
         oddsScore:10,
         divisible:true
       },{
-        quantity:1e6,
+        quantity:1e7,
         asset:"MONA",
         oddsScore:5,
         divisible:true
@@ -109,6 +109,10 @@ module.exports = {
         quantity:1,
         asset:"MAGATAMAWT",
         oddsScore:100
+      },{
+        quantity:1e3,
+        asset:"YAJU",
+        oddsScore:500
       }]
     },
     request:false,
