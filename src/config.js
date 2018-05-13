@@ -47,18 +47,18 @@ module.exports = {
     isAtomicSwapAvailable:true,
 
 
-    entropyCipher:process.env.FP_ENTROPY,
-    password:process.env.FP_PASSWORD
+    entropyCipher:process.env.FP_ENTROPY, // Monya's encrypted entropy
+    password:process.env.FP_PASSWORD // password for entropy
   }),
-  recaptcha:{
+  recaptcha:{ // set false if recaptcha is not require
     secret:process.env.FP_RECAPTCHA_SECRET
   },
  
   feeSatByte:101,
-  feature:{// set false if disabled these features
-    random:{
+  feature:{
+    random:{// set false if disable random faucet
       assets:[{
-        quantity:10e8,//quantity is satoshi
+        quantity:10e8,//quantity is satoshi, even if you set divisible=true
         asset:"MONA",
         oddsScore:1,
         divisible:true
@@ -116,9 +116,7 @@ module.exports = {
       }]
     },
     request:false,
-    receiveAndReturn:{
-      
-    }
+    receiveAndReturn:false
   },
   service:{
     port:process.env.PORT||((process.env.NODE_ENV==="production")?80:3939)
