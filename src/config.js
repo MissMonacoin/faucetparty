@@ -116,7 +116,9 @@ module.exports = {
       }]
     },
     request:false,
-    receiveAndReturn:false
+    receiveAndReturn:{
+      
+    }
   },
   service:{
     port:process.env.PORT||((process.env.NODE_ENV==="production")?80:3939)

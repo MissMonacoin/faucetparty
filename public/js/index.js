@@ -9,7 +9,7 @@ var errors={
 }
 var queries = location.search.substr(1).split("&").reduce(function (a, b) {
   var kv = b.split("=");
-  a[kv[0]] = decodeURI(kv[1])
+  a[kv[0]] = decodeURIComponent(kv[1])
   return a;
 }, {});
 
