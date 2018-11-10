@@ -23,7 +23,7 @@ function featureFilter(feature){
   }
 }
 const recaptcha=(req,res,next)=>{
-  if (config.recaptcha) {
+  if (config.recaptcha.secret) {
     if(!req.body.recaptchaResponse){
       return next("RecaptchaRequired")
     }
