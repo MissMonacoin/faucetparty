@@ -13,8 +13,8 @@ module.exports = {
     defaultFeeSatPerByte:150,
     apiEndpoints:[
       {
-        url:"https://mona.monya.ga/insight-api-monacoin",
-        explorer:"https://mona.monya.ga/insight"
+        url:"https://mona.monacoin.ml/insight-api-monacoin",
+        explorer:"https://mona.monacoin.ml/insight"
       },
       {
         url:"https://mona.insight.monaco-ex.org/insight-api-monacoin",
@@ -42,7 +42,7 @@ module.exports = {
       fiat:"jpy"
     },
     confirmations:6,
-    counterpartyEndpoint:"https://wallet.monaparty.me/_api",
+    counterpartyEndpoint:"https://monaparty.tk/_api",
     opReturnLength:83,
     isAtomicSwapAvailable:true,
 
@@ -57,22 +57,22 @@ module.exports = {
   feeSatByte:101,
   feature:{
     random:{// set false if disable random faucet
-      assets:[{
+      assets:[/*{
         quantity:10e8,//quantity is satoshi, even if you set divisible=true
         asset:"MONA",
         oddsScore:1,
         divisible:true
-      },{
+      },*/{
         quantity:3e8,
         asset:"XMP",
         oddsScore:10,
         divisible:true
-      },{
+      }/*,{
         quantity:1e7,
         asset:"MONA",
         oddsScore:5,
         divisible:true
-      },{
+      }*/,{
         quantity:5e7,
         asset:"XMP",
         oddsScore:100,
@@ -80,15 +80,15 @@ module.exports = {
       },{
         quantity:1,
         asset:"MISSMONACOIN.THANKYOU",
-        oddsScore:1500
+        oddsScore:150
       },{
         quantity:1,
         asset:"GIFT",
-        oddsScore:700
+        oddsScore:300
       },{
         quantity:1,
         asset:"ECOJK.HYOU",
-        oddsScore:500
+        oddsScore:200
       },{
         quantity:1,
         asset:"JAVASCRIPT",
