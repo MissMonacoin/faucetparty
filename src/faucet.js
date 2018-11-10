@@ -63,7 +63,7 @@ router.post("/random",recaptcha,featureFilter("random"),(req,res,next)=>{
   (async function(){
     const addrProp = await cp.cp.getAddressProp("",dest)
     if(addrProp.unconfirmedTxApperances||addrProp.txApperances){
-      return next("AddressHasBeenUsed")
+      //return next("AddressHasBeenUsed")
     }
     const txHex= await cp.createTx({
       divisible:false,
