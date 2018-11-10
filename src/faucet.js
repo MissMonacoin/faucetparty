@@ -75,7 +75,7 @@ router.post("/random",recaptcha,featureFilter("random"),(req,res,next)=>{
       password:config.coin.network.password,
       memo,
       feePerByte:config.feeSatByte,
-      useEnhancedSend:false
+      useEnhancedSend:true
       
     })
     const txId = await cp.signTx(txHex,config.coin.entropyCipher,config.coin.password,0)
