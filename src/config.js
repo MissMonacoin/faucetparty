@@ -84,7 +84,7 @@ module.exports = {
       },{
         quantity:1,
         asset:"GIFT",
-        oddsScore:300
+        oddsScore:200
       },{
         quantity:1,
         asset:"ECOJK.HYOU",
@@ -96,7 +96,7 @@ module.exports = {
       },{
         quantity:1,
         asset:"MONAICON",
-        oddsScore:500
+        oddsScore:300
       },{
         quantity:1,
         asset:"MAGATAMAVT",
@@ -110,9 +110,9 @@ module.exports = {
         asset:"MAGATAMAWT",
         oddsScore:100
       },{
-        quantity:1e3,
-        asset:"YAJU",
-        oddsScore:500
+        quantity:1e2,
+        asset:"YJSNPI",
+        oddsScore:200
       }]
     },
     request:false,
